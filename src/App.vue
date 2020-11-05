@@ -11,15 +11,16 @@
     <div class="row">
       <div class="col-md-3 bg-secondary" id="sidebar">
         <ul class="list ">
-          <router-link to="/" tag="li" ><a >Home</a></router-link>
-          <!-- <li class="list-item"><a class="list-link" href="#"></a></li> -->
+          <router-link  class="list-item" to="/" tag="li" ><a class="list-link" >Home</a></router-link>
+          <router-link class="list-item" to="/login" tag="li" ><a class="list-link" >Login</a></router-link>
+          <router-link class="list-item" to="/register" tag="li" ><a class="list-link" >Register</a></router-link>
+
           <router-link class="list-item"  to="/settings"><a class="list-link" >Settings</a></router-link>
          
           <li class="list-item"><a class="list-link" href="#">Settings</a></li>
           <li class="list-item"><a class="list-link" href="#">Profile</a></li>
           <li class="list-item"><a class="list-link" href="#">Messages</a></li>
-          <li class="list-item"><a class="list-link" href="#">Login</a></li>
-          <li class="list-item"><a class="list-link" href="#">Register</a></li>
+          
         </ul>
       </div>
       <div class="col-md-9">
