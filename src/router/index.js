@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import content from "@/components/content.vue"
 import register from "@/components/register.vue"
 import loginandpassword from '@/components/slots/loginandpassword.vue'
+import login from '@/components/login.vue'
 
 Vue.use(VueRouter);
 
@@ -14,7 +15,7 @@ export default new VueRouter({
             component:content
         },
         {
-            path:'/register',
+            path:'/registrate',
             component:register,
             children:[
                 {
@@ -24,6 +25,11 @@ export default new VueRouter({
 
                 }
             ]
+        },
+        {
+            path:'/login',
+            name:'login',
+            component:login
         }
     ],
     mode:'history'

@@ -25,6 +25,12 @@ new Vue({
         measurementId: "G-DXM572TEFM"
     });
 
+    firebase.auth().onAuthStateChanged(user=>{
+      if(user){
+        this.$store.dispatch('isLoginedAction',user)
+      }
+    })
+
       // Initialize Firebase
       // firebase.initializeApp(firebaseConfig);
       // firebase.analytics();

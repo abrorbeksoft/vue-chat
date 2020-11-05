@@ -1,5 +1,6 @@
 import firebase from 'firebase/app'
 import 'firebase/auth'
+// import error from "./error";
 
 class User{
     constructor(id){
@@ -18,6 +19,7 @@ export default {
             return state.user;
         },
         getEmailAndPassword(state){
+
             return {
                 emails: state.email,
                 password: state.password
@@ -25,27 +27,45 @@ export default {
         }
     },
     mutations:{
-        registerUser(state,payload){
+        setUser(state,payload){
             state.user=payload
         },
-        setEmailAndPassword(state,{email,password})
-        {
+        setEmailAndPassword(state,{email,password}){
             state.email=email;
             state.password=password;
         }
     },
     actions:{
-        registerUserAction({commit},{email,password})
-        {
+        registerUserAction({commit},{email,password}) {
             try {
                 firebase.auth().createUserWithEmailAndPassword(email, password).then(user => {
-                    commit('registerUser', new User(user.uid));
+                    commit('setUser', new User(user.uid));
                 })
             }
             catch (error){
+                this.$store.dispatch('setErrorAction',error.message);
+                throw error
+            }
+        },
+        loginUserAction({commit},{email,password}){
+
+            try {
+                firebase.auth().signInWithEmailAndPassword(email,password).then(user=>{
+                    commit('setUser',new User(user.uid))
+                    console.log(user)
+                })
+            }
+            catch(error){
                 this.$store.dispatch('setErrorAction',error.message)
                 throw error
             }
+        },
+        isLoginedAction({commit},payload){
+            commit('setUser',payload)
+        },
+        logoutUserAction({commit}) {
+            firebase.auth().signOut();
+            commit('setUser',null);
         },
         setEmailAndPasswordAction({commit},{email,password}) {
             commit('setEmailAndPassword',{

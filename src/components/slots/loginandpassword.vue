@@ -2,7 +2,7 @@
   <div id="login">
       <div class="row my-3 ">
         <div class="col-2 text-right ">
-                <i class="fa  fa-2x fa-user self-center"></i>
+                <i class="fas  fa-2x fa-at self-center"></i>
             </div>  
             <div class="col-10">
                 <input v-model="email" type="email" class="form-control">
