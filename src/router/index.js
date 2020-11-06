@@ -33,7 +33,6 @@ export default new VueRouter({
         {
             path:'/login',
             name:'login',
-            beforeEnter:authmiddleware,
             component:login
         },
         {

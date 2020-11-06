@@ -5,6 +5,7 @@ import router from './router/index'
 import firebase from 'firebase/app'
 import 'firebase/auth'
 import 'firebase/firestore'
+import 'firebase/database'
 
 Vue.config.productionTip = false;
 
@@ -25,11 +26,23 @@ new Vue({
         measurementId: "G-DXM572TEFM"
     });
 
+    class User{
+      constructor(id){
+        this.id=id;
+      }
+    }
+
     firebase.auth().onAuthStateChanged(user=>{
       if(user){
-        this.$store.dispatch('isLoginedAction',user)
+        this.$store.dispatch('isLoginedAction',new User(user.uid))
       }
     })
+
+    
+    this.$store.dispatch('intializeMessages')
+    
+
+    
 
       // Initialize Firebase
       // firebase.initializeApp(firebaseConfig);

@@ -6,7 +6,7 @@
       <div class="col d-flex justify-content-between p-2 bg-primary">
         <img  src="@/assets/logo.png" alt="" srcset="">
         <div v-if="getUser" class="text-center position-relative d-inline-block text-white " >
-          <button @click="logout()" class="btn btn-sm btn-danger">Logout</button>
+          <button @click="logout" class="btn btn-sm btn-danger">Logout</button>
         </div>
       </div>
     </div>
@@ -122,7 +122,7 @@ img{
 
 #exit{
   position: absolute;
-  tab-index: 123;
+  
 }
 
 .list-item{

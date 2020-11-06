@@ -36,9 +36,9 @@ export default {
         }
     },
     actions:{
-        registerUserAction({commit},{email,password}) {
+        async registerUserAction({commit},{email,password}) {
             try {
-                firebase.auth().createUserWithEmailAndPassword(email, password).then(user => {
+                await firebase.auth().createUserWithEmailAndPassword(email, password).then(user => {
                     commit('setUser', new User(user.uid));
                 })
             }
@@ -47,12 +47,13 @@ export default {
                 throw error
             }
         },
-        loginUserAction({commit},{email,password}){
+        async loginUserAction({commit},{email,password}){
 
             try {
-                firebase.auth().signInWithEmailAndPassword(email,password).then(user=>{
+                await firebase.auth().signInWithEmailAndPassword(email,password).then(user=>{
+                    
                     commit('setUser',new User(user.uid))
-                    console.log(user)
+                    
                 })
             }
             catch(error){
